@@ -14,6 +14,7 @@ steps:
           echo "Regression Tests Failed!"
 
 outputArtifacts:
-  - name: test_report
+  - name: my_output_file
     type: BINARY
-    location: target/surefire-reports/
+    # Maven build panna file 'target' folder-kulla thaan vizhum
+    location: target/*.jar
