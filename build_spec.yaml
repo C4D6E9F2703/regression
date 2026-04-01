@@ -8,3 +8,7 @@ steps:
     name: "Install Maven and Run Tests"
     command: |
       mvn clean package -DskipTests=true
+    onFailure:
+      - type: Command
+        command: |
+          echo "Regression Tests Failed!"
