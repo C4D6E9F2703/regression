@@ -7,14 +7,15 @@ steps:
   - type: Command
     name: "Install Maven and Run Tests"
     command: |
-      mvn clean test
+      # Use 'package' to ensure the JAR file and reports are both created
+      mvn clean package -DskipTests=false 
     onFailure:
       - type: Command
         command: |
           echo "Regression Tests Failed!"
 
 outputArtifacts:
-  - name: my_output_file
-    type: BINARY
-    # Maven build panna file 'target' folder-kulla thaan vizhum
+  - name: test_report
+    type: BINARY 
+    # This matches the pattern the system is looking for
     location: target/*.jar
